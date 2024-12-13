@@ -22,8 +22,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const emailInput = document.getElementById('emailInput');
             const email = emailInput.value;
 
-            // Check if the email is not empty
-            if (email) {
+            // Check if the email is not empty and is valid
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email && emailRegex.test(email)) {
                 alert(`Thank you for signing up! We've received your email: ${email}`);
                 emailInput.value = ''; // Clear the input after successful sign-up
             } else {
@@ -32,5 +33,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
-       
