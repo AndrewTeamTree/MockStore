@@ -9,7 +9,7 @@
      
 
     </style>
-    <script type="module" src="js.js"></script>
+    <script type="module" src="script.js"></script>
   </head>
   <body>
     <header>
@@ -153,11 +153,24 @@
 </section>
 <hr>
 
-
-
+<!-- View Shopping Cart Button -->
 <div class="section2">
-<a href="/free-trial.html" class="free-trial-button" style="width: auto;">View Shopping Cart</a>
+  <a href="#" id="viewCartButton" class="free-trial-button" style="width: auto;">View Shopping Cart</a>
 </div>
+
+<!-- Modal for Viewing Cart -->
+<div id="cartModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <h2>Your Shopping Cart</h2>
+    <ul id="cartItems"></ul> <!-- List of cart items will be added here -->
+    <button id="processOrderButton">Process Order</button>
+    <button id="clearCartButton">Clear Cart</button>
+  </div>
+</div>
+
+
+
 <hr>
  
 <footer>
@@ -165,14 +178,30 @@
     <tr>
       <td style="font-weight: bold;">Bloom Valley Nursery</td>
       <td style="font-weight: bold; display: contents; margin-left: 30px;">
-        <input type="text" class="signUp" style="width: 50%; margin-left: 30px;">Sign up for our Newsletter</td>
+        <!-- Newsletter Sign Up Section -->
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+          <input 
+            type="email" 
+            id="emailInput" 
+            style="width: 50%; margin-left: 30px;" 
+            placeholder="Enter your email" 
+            required
+          />
+          <button 
+            style="width: 50%; margin-left: 30px; margin-top: 10px; display: inline;" 
+            class="signUp" 
+            data-signUp="Thank you for signing up!"
+          >
+            Sign up for our Newsletter
+          </button>
+        </div>
+      </td>
       <td style="font-weight: bold;">Contact Us</td>
     </tr>
     <tr>
-      <td> &copy; 2023-2024</td>
+      <td>&copy; 2023-2024</td>
       <td>Instagram</td>
       <td>Facebook</td>
- 
     </tr>
     <tr>
       <td>Privacy-Terms</td>
@@ -180,10 +209,6 @@
       <td>Mapquest</td>
     </tr>
   </table>
-  
-  </table>
-  
-
-  </footer>
-  </body>
+</footer>
+</body>
 </html>

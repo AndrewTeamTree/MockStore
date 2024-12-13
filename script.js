@@ -1,35 +1,87 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Get all the "Add to Cart" buttons and "Sign Up" buttons
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize empty cart array
+    let cart = [];
+  
+    // Get all the "Add to Cart" buttons
     const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
-    const signUpButtons = document.querySelectorAll('.signUp');
     
-    // Add event listeners to each "Add to Cart" button
+    // Add event listener to each "Add to Cart" button
     addToCartButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default action (link navigation)
-            
-            const productName = event.target.getAttribute('aria-label');
-            alert(`Item added to the cart: ${productName}`);
-        });
+      button.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default action (page reload or link behavior)
+  
+        // Get the product name and price from the button's data attributes
+        const productName = event.target.getAttribute('data-product');
+        const productPrice = event.target.getAttribute('data-price');
+  
+        // Add the product to the cart array
+        cart.push({ name: productName, price: productPrice });
+  
+        // Optionally, show an alert or update the cart icon (if implemented)
+        alert(`${productName} added to your cart.`);
+      });
     });
-
-    // Add event listeners to each "Sign Up" button
-    signUpButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default button action
-
-            // Get the email input field value
-            const emailInput = document.getElementById('emailInput');
-            const email = emailInput.value;
-
-            // Check if the email is not empty and is valid
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (email && emailRegex.test(email)) {
-                alert(`Thank you for signing up! We've received your email: ${email}`);
-                emailInput.value = ''; // Clear the input after successful sign-up
-            } else {
-                alert('Please enter a valid email address.');
-            }
+  
+    // Get the modal, close button, and other elements
+    const modal = document.getElementById("cartModal");
+    const closeModal = document.getElementById("closeModal");
+    const viewCartButton = document.getElementById("viewCartButton");
+    const cartItemsContainer = document.getElementById("cartItems");
+    const processOrderButton = document.getElementById("processOrderButton");
+    const clearCartButton = document.getElementById("clearCartButton");
+  
+    // Function to display the cart in the modal
+    function updateCartModal() {
+      // Clear the cart list
+      cartItemsContainer.innerHTML = '';
+  
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<li>Your cart is empty.</li>';
+      } else {
+        // Display each item in the cart
+        cart.forEach(item => {
+          const listItem = document.createElement("li");
+          listItem.textContent = `${item.name} - $${item.price}`;
+          cartItemsContainer.appendChild(listItem);
         });
+      }
+    }
+  
+    // When the user clicks the "View Shopping Cart" button, open the modal
+    viewCartButton.addEventListener('click', function () {
+      updateCartModal(); // Update the cart contents
+      modal.style.display = "block"; // Show the modal
     });
-});
+  
+    // When the user clicks the close button, close the modal
+    closeModal.addEventListener('click', function () {
+      modal.style.display = "none"; // Close the modal
+    });
+  
+    // When the user clicks anywhere outside the modal, close it
+    window.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  
+    // When the user clicks "Process Order"
+    processOrderButton.addEventListener('click', function () {
+      if (cart.length === 0) {
+        alert("Your cart is empty. Please add items to the cart before proceeding.");
+      } else {
+        alert("Thank you for your order!");
+        cart = []; // Clear the cart after processing
+        updateCartModal(); // Update the modal to reflect the cleared cart
+      }
+    });
+  
+    // When the user clicks "Clear Cart"
+    clearCartButton.addEventListener('click', function () {
+      cart = []; // Clear the cart
+      alert("Cart is cleared!");
+      updateCartModal(); // Update the modal to reflect the cleared cart
+    });
+  });
+  
