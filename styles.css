@@ -543,3 +543,12 @@ form button {
   text-decoration: none;
   cursor: pointer;
 }
+
+#orderDetails {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+#orderDetails p {
+  margin: 10px 0;
+}
