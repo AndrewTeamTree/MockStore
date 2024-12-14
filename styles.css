@@ -255,26 +255,32 @@ main img {
   height: 100%;
 }
 
-/* Styling for card container to display cards side by side */
-input
-/* Styling for the card */
+
+
 .card {
-  flex-wrap: wrap;
-  flex: 1 1 33%; /* equal 3 columns */
-  height: 33%; /* rows are even */
-  
+  flex: 1 1 33%; /* 3 columns per row */
+  min-height: 200px; /* Adjust as needed for uniform height */
+  border: 1px solid black;
+  background-color: #f7f7f7;
+  box-shadow: 1px 3px 14px rgba(0, 0, 0, 0.2);
   display: flex; /* Enable Flexbox layout for the card */
-  flex-direction: row; /* Stack elements vertically by default */
+  flex-direction: column; /* Stack elements vertically */
   align-items: center; /* Center-align the content inside the card */
-  width: 48%; 
-  min-height: 40%; /* Ensures cards have a minimum height */ 
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 15px 15px;
-  margin-bottom: 10px; /* spacing between cards */ 
+  padding: 15px;
+  margin-bottom: 10px; /* Spacing between rows */
 }
+
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 1px 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+
 
 
 .card2 {
@@ -305,15 +311,6 @@ input
   margin-bottom: 10px; /* spacing between cards */
   flex: 1 1 33%; /* equal 3 columns */
 }
-
-
-.card img {
-  width: 100%; /* Make the image fill the card's width */
-  height: auto; /* Maintain the aspect ratio */
-  object-fit: contain; /* Ensure the image fits within its container */
-}
-
-
 
 
 .card .button-container {
@@ -399,10 +396,7 @@ hr {
   object-fit: contain; /* Ensures the entire image is visible */
 }
 
-.card:hover {
-  transform: translateY(-8px); /* Slightly more pronounced hover effect */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-}
+
 
 .section {
   display: flex;
