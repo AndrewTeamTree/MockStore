@@ -41,6 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  document.querySelector('.signUp').addEventListener('click', function() {
+    alert('Thank you for signing up!');
+  });
+  
+
   // View cart button
   viewCartButton.addEventListener('click', function () {
     updateCartModal();
@@ -98,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
       feedback: feedback,
       customOrder: customOrder
     };
+
 
     // Save the order information to localStorage
     localStorage.setItem('customOrder', JSON.stringify(orderInfo));
