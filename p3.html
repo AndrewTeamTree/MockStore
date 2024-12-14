@@ -91,10 +91,7 @@
   
      
    
-    <form>
-      <form action="p3.html" novalidate>
-       
-         
+    <form id="contactForm">
           <fieldset class="basic-info">         
             
             <legend><H2>Contact Us</H2></legend>
@@ -108,16 +105,16 @@
               <input type="email" id="email" name="user-email" style="width: 50%; margin-left: 30px;">
             </label>
             
-            <label for="text" style="display: contents; margin-left: 30px;"><pre>    Phone number: </pre>
-              <input type="text" style="width: 50%; margin-left: 30px;">
+            <label for="phone" style="display: contents; margin-left: 30px;"><pre>    Phone number: </pre>
+              <input type="text" id="phone" name="user-phone" style="width: 50%; margin-left: 30px;">
             </label>
             
-            <label for="text" style="display: contents; margin-left: 30px; "><pre>    FeedBack/ Order information: </pre>
-              <textarea class="feedback"></textarea>
-            </label>
+            <label for="feedback" style="display: contents; margin-left: 30px;">
+              <pre>    Feedback/Order information: </pre>
+              <textarea id="feedback" name="feedback" style="display: contents; margin-left: 30px;"></textarea>
+          </label>
 
-            
-            <label for="text" style=" margin-left: 30px;"><pre>Custom Order:<input type="radio" style="width: 20%; margin-left: -33px;"></pre>
+            <label for="text" style=" margin-left: 30px;"><pre>Custom Order:<input type="radio" id="customOrder" style="width: 20%; margin-left: -33px;"></pre>
               <br>
             </label>
 
@@ -125,6 +122,7 @@
             <button type="submit" style="width: 20%; margin-left: 30px;">Submit</button>
             <button type="submit" class="button2" style="width: 20%; margin-left: 30px;">Clear Form</button>
             </div>
+          </fieldset>
     </form>
    <hr>
     

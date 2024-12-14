@@ -1,31 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Get all the "Add to Cart" buttons
+  
+  // Shopping Cart Functionality
   const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
-
-  // Add event listener to each "Add to Cart" button
-  addToCartButtons.forEach(button => {
-    button.addEventListener('click', function (event) {
-      event.preventDefault(); // Prevent the default action (page reload or link behavior)
-
-      // Get the product name and price from the button's data attributes
-      const productName = event.target.getAttribute('data-product');
-      const productPrice = event.target.getAttribute('data-price');
-
-      // Get the current cart from sessionStorage (or create an empty array if none exists)
-      let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-
-      // Add the product to the cart array
-      cart.push({ name: productName, price: productPrice });
-
-      // Save the updated cart to sessionStorage
-      sessionStorage.setItem('cart', JSON.stringify(cart));
-
-      // Optionally, show an alert or update the cart icon (if implemented)
-      alert(`${productName} added to your cart.`);
-    });
-  });
-
-  // Get the modal, close button, and other elements
   const modal = document.getElementById("cartModal");
   const closeModal = document.getElementById("closeModal");
   const viewCartButton = document.getElementById("viewCartButton");
@@ -33,18 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const processOrderButton = document.getElementById("processOrderButton");
   const clearCartButton = document.getElementById("clearCartButton");
 
-  // Function to display the cart in the modal
+  // Function to update the cart modal
   function updateCartModal() {
-    // Get the cart from sessionStorage
     const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-
-    // Clear the cart list
     cartItemsContainer.innerHTML = '';
 
     if (cart.length === 0) {
       cartItemsContainer.innerHTML = '<li>Your cart is empty.</li>';
     } else {
-      // Display each item in the cart
       cart.forEach(item => {
         const listItem = document.createElement("li");
         listItem.textContent = `${item.name} - $${item.price}`;
@@ -53,43 +25,87 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // When the user clicks the "View Shopping Cart" button, open the modal
+  // Add product to cart
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+
+      const productName = event.target.getAttribute('data-product');
+      const productPrice = event.target.getAttribute('data-price');
+      let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+      cart.push({ name: productName, price: productPrice });
+      sessionStorage.setItem('cart', JSON.stringify(cart));
+
+      alert(`${productName} added to your cart.`);
+    });
+  });
+
+  // View cart button
   viewCartButton.addEventListener('click', function () {
-    updateCartModal(); // Update the cart contents
-    modal.style.display = "block"; // Show the modal
+    updateCartModal();
+    modal.style.display = "block";
   });
 
-  // When the user clicks the close button, close the modal
+  // Close the modal
   closeModal.addEventListener('click', function () {
-    modal.style.display = "none"; // Close the modal
+    modal.style.display = "none";
   });
 
-  // When the user clicks anywhere outside the modal, close it
+  // Close the modal if clicked outside of it
   window.addEventListener('click', function (event) {
     if (event.target === modal) {
       modal.style.display = "none";
     }
   });
 
-  // When the user clicks "Process Order"
+  // Process order
   processOrderButton.addEventListener('click', function () {
     const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-
     if (cart.length === 0) {
       alert("Your cart is empty. Please add items to the cart before proceeding.");
     } else {
       alert("Thank you for your order!");
-      sessionStorage.removeItem('cart'); // Clear the cart after processing
-      updateCartModal(); // Update the modal to reflect the cleared cart
+      sessionStorage.removeItem('cart');
+      updateCartModal();
     }
   });
 
-  // When the user clicks "Clear Cart"
+  // Clear cart
   clearCartButton.addEventListener('click', function () {
-    sessionStorage.removeItem('cart'); // Remove the cart from sessionStorage
+    sessionStorage.removeItem('cart');
     alert("Cart is cleared!");
-    updateCartModal(); // Update the modal to reflect the cleared cart
+    updateCartModal();
   });
+
+  // Custom Order Form Functionality
+  const contactForm = document.getElementById('contactForm');
+  
+  // Handle form submission
+  contactForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const feedback = document.getElementById('feedback').value;
+    const customOrder = document.getElementById('customOrder').checked;
+
+    const orderInfo = {
+      name: name,
+      email: email,
+      phone: phone,
+      feedback: feedback,
+      customOrder: customOrder
+    };
+
+    // Save the order information to localStorage
+    localStorage.setItem('customOrder', JSON.stringify(orderInfo));
+
+    alert('Your order information has been saved successfully!');
+    
+    // Optionally clear the form
+    contactForm.reset();
+  });
+
 });
-
-
