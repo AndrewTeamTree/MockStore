@@ -17,6 +17,18 @@ const urlsToCache = [
     '/free-trial.html'
 ];
 
+// Fetch event - serving cached content
+self.addEventListener('fetch', (event) => {
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        return fetch(event.request);
+      })
+    );
+  });
+
 // Install the service worker
 self.addEventListener('install', (event) => {
     event.waitUntil(
