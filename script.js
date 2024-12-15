@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  
-  // Shopping Cart Functionality
+  // Cart Functionality
   const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
   const modal = document.getElementById("cartModal");
   const closeModal = document.getElementById("closeModal");
@@ -44,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector('.signUp').addEventListener('click', function() {
     alert('Thank you for signing up!');
   });
-  
 
   // View cart button
   viewCartButton.addEventListener('click', function () {
@@ -85,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Custom Order Form Functionality
   const contactForm = document.getElementById('contactForm');
-  
+
   // Handle form submission
   contactForm.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -104,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
       customOrder: customOrder
     };
 
-
     // Save the order information to localStorage
     localStorage.setItem('customOrder', JSON.stringify(orderInfo));
 
@@ -113,5 +110,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Optionally clear the form
     contactForm.reset();
   });
+
+  // Display order details on the order confirmation page
+  const savedOrder = JSON.parse(localStorage.getItem('customOrder'));
+
+  if (savedOrder) {
+    document.getElementById('orderName').textContent = savedOrder.name;
+    document.getElementById('orderEmail').textContent = savedOrder.email;
+    document.getElementById('orderPhone').textContent = savedOrder.phone;
+    document.getElementById('orderFeedback').textContent = savedOrder.feedback;
+    document.getElementById('orderCustom').textContent = savedOrder.customOrder ? 'Yes' : 'No';
+  } else {
+    document.getElementById('orderDetails').innerHTML = '<p>No order information available.</p>';
+  }
 
 });
