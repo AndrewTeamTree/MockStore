@@ -10,13 +10,16 @@
     <h1>Thank you for your order!</h1>
     <h2>Your Order Information:</h2>
     <div id="contactForm">
-      <p><strong>Name:</strong> <span id="orderName"></span></p>
-      <p><strong>Email:</strong> <span id="orderEmail"></span></p>
-      <p><strong>Phone:</strong> <span id="orderPhone"></span></p>
-      <p><strong>Feedback:</strong> <span id="orderFeedback"></span></p>
-      <p><strong>Custom Order:</strong> <span id="orderCustom"></span></p>
+      <p><strong>Name:</strong> <span id="orderName">N/A</span></p>
+      <p><strong>Email:</strong> <span id="orderEmail">N/A</span></p>
+      <p><strong>Phone:</strong> <span id="orderPhone">N/A</span></p>
+      <p><strong>Feedback:</strong> <span id="orderFeedback">N/A</span></p>
+      <p><strong>Custom Order:</strong> <span id="orderCustom">No</span></p>
     </div>
-    
+
+    <div id="orderDetails"></div> <!-- For handling missing order data -->
+
+    <script src="script.js"></script>
     <script src="order.js"></script>
   </body>
 </html>
