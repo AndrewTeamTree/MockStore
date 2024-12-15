@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const processOrderButton = document.getElementById("processOrderButton");
   const clearCartButton = document.getElementById("clearCartButton");
 
+  if (!viewCartButton || !cartItemsContainer || !modal || !closeModal) {
+    console.error("Some essential elements are missing in the DOM.");
+    return; // Exit script if essential elements are missing
+  }
   // Function to update the cart modal
   function updateCartModal() {
     try {
@@ -86,49 +90,42 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCartModal();
   });
 
-  // Custom Order Form Functionality
+  // Handle custom order form
   const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const name = document.getElementById('name')?.value;
+      const email = document.getElementById('email')?.value;
+      const phone = document.getElementById('phone')?.value;
+      const feedback = document.getElementById('feedback')?.value;
+      const customOrder = document.getElementById('customOrder')?.checked;
 
-  // Handle form submission
-  contactForm.addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevents the page refresh
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const feedback = document.getElementById('feedback').value;
-    const customOrder = document.getElementById('customOrder').checked;
-
-    const orderInfo = {
-      name: name,
-      email: email,
-      phone: phone,
-      feedback: feedback,
-      customOrder: customOrder
-    };
-
-    // Save the order information to localStorage
-    try {
+      const orderInfo = { name, email, phone, feedback, customOrder };
       localStorage.setItem('customOrder', JSON.stringify(orderInfo));
       alert('Your order information has been saved successfully!');
-    } catch (error) {
-      console.error('Error saving order information to localStorage:', error);
-    }
-    console.log('Form submitted!'); 
-    // Optionally clear the form
-    contactForm.reset();
-  });
-
-  // Display order details on the order confirmation page
-  const savedOrder = JSON.parse(localStorage.getItem('customOrder'));
-
-  if (savedOrder) {
-    document.getElementById('orderName').textContent = savedOrder.name;
-    document.getElementById('orderEmail').textContent = savedOrder.email;
-    document.getElementById('orderPhone').textContent = savedOrder.phone;
-    document.getElementById('orderFeedback').textContent = savedOrder.feedback;
-    document.getElementById('orderCustom').textContent = savedOrder.customOrder ? 'Yes' : 'No';
+      contactForm.reset();
+    });
   } else {
-    document.getElementById('orderDetails').innerHTML = '<p>No order information available.</p>';
+    console.error("Contact form not found");
+  }
+
+  // Order confirmation page
+  const savedOrder = JSON.parse(localStorage.getItem('customOrder'));
+  const orderName = document.getElementById('orderName');
+  const orderEmail = document.getElementById('orderEmail');
+  const orderPhone = document.getElementById('orderPhone');
+  const orderFeedback = document.getElementById('orderFeedback');
+  const orderCustom = document.getElementById('orderCustom');
+  const orderDetails = document.getElementById('orderDetails');
+
+  if (orderName && savedOrder) {
+    orderName.textContent = savedOrder.name || "N/A";
+    orderEmail.textContent = savedOrder.email || "N/A";
+    orderPhone.textContent = savedOrder.phone || "N/A";
+    orderFeedback.textContent = savedOrder.feedback || "N/A";
+    orderCustom.textContent = savedOrder.customOrder ? "Yes" : "No";
+  } else if (orderDetails) {
+    orderDetails.innerHTML = '<p>No order information available.</p>';
   }
 });
