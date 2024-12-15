@@ -130,8 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
       orderPhone.textContent = savedOrder.phone || "N/A";
       orderFeedback.textContent = savedOrder.feedback || "N/A";
       orderCustom.textContent = savedOrder.customOrder ? "Yes" : "No";
-    } else if (orderDetails) {
-      orderDetails.innerHTML = '<p>No order information available.</p>';
     }
   }
 });
