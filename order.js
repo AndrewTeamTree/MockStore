@@ -10,6 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('orderCustom').textContent = savedOrder.customOrder ? "Yes" : "No";
   } else {
     // If no saved order, display a message
-    document.getElementById('orderDetails').innerHTML = '<p>No order information available.</p>';
+    document.getElementById('contactForm').innerHTML = '<p>No order information available.</p>';
   }
 });

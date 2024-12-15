@@ -5,7 +5,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission to allow handling
+      
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          feedback: document.getElementById('feedback').value,
+          customOrder: document.querySelector('input[name="orderType"]:checked') ? true : false
+        };
+      
+        // Save the form data to sessionStorage
+        sessionStorage.setItem('contactForm', JSON.stringify(formData));
+      
+        // Redirect to order confirmation page
+        window.location.href = 'order-confirmation.html';
+      });
+      </script>
+      
   </head>
   <body>
     <header>
