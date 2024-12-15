@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const processOrderButton = document.getElementById("processOrderButton");
   const clearCartButton = document.getElementById("clearCartButton");
   const contactForm = document.getElementById('contactForm');
-  
+
   if (!viewCartButton || !cartItemsContainer || !closeModal) {
     console.error("Some essential elements are missing in the DOM.");
     return; // Exit script if essential elements are missing
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const orderPhone = document.getElementById('orderPhone');
     const orderFeedback = document.getElementById('orderFeedback');
     const orderCustom = document.getElementById('orderCustom');
-    const orderDetails = document.getElementById('orderDetails');
+    
 
     if (savedOrder) {
       orderName.textContent = savedOrder.name || "N/A";
