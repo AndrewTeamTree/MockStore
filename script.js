@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  
   // Cart Functionality
   const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
   const modal = document.getElementById("cartModal");
@@ -10,17 +11,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to update the cart modal
   function updateCartModal() {
-    const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-    cartItemsContainer.innerHTML = '';
+    try {
+      const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+      cartItemsContainer.innerHTML = '';
 
-    if (cart.length === 0) {
-      cartItemsContainer.innerHTML = '<li>Your cart is empty.</li>';
-    } else {
-      cart.forEach(item => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${item.name} - $${item.price}`;
-        cartItemsContainer.appendChild(listItem);
-      });
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<li>Your cart is empty.</li>';
+      } else {
+        cart.forEach(item => {
+          const listItem = document.createElement("li");
+          listItem.textContent = `${item.name} - $${item.price}`;
+          cartItemsContainer.appendChild(listItem);
+        });
+      }
+    } catch (error) {
+      console.error('Error parsing cart data from sessionStorage:', error);
     }
   }
 
@@ -40,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  document.querySelector('.signUp').addEventListener('click', function() {
+  document.querySelector('.signUp').addEventListener('click', function () {
     alert('Thank you for signing up!');
   });
 
@@ -86,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Handle form submission
   contactForm.addEventListener('submit', function (event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevents the page refresh
 
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
@@ -103,10 +108,13 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Save the order information to localStorage
-    localStorage.setItem('customOrder', JSON.stringify(orderInfo));
+    try {
+      localStorage.setItem('customOrder', JSON.stringify(orderInfo));
+      alert('Your order information has been saved successfully!');
+    } catch (error) {
+      console.error('Error saving order information to localStorage:', error);
+    }
 
-    alert('Your order information has been saved successfully!');
-    
     // Optionally clear the form
     contactForm.reset();
   });
@@ -123,5 +131,4 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     document.getElementById('orderDetails').innerHTML = '<p>No order information available.</p>';
   }
-
 });
