@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   
-  // Cart Functionality
+  
   const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
   const modal = document.getElementById("cartModal");
   const closeModal = document.getElementById("closeModal");
@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartItemsContainer = document.getElementById("cartItems");
   const processOrderButton = document.getElementById("processOrderButton");
   const clearCartButton = document.getElementById("clearCartButton");
-
+  const contactForm = document.getElementById('contactForm');
+  
   if (!viewCartButton || !cartItemsContainer || !closeModal) {
     console.error("Some essential elements are missing in the DOM.");
     return; // Exit script if essential elements are missing
@@ -88,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Handle custom order form
-  const contactForm = document.getElementById('contactForm');
+  
   if (contactForm) {
     contactForm.addEventListener('submit', function (event) {
       event.preventDefault();
