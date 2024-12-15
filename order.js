@@ -1,16 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Retrieve the custom order information from localStorage
   const savedOrder = JSON.parse(localStorage.getItem('customOrder'));
 
   if (savedOrder) {
-    // Display the order details on the page
-    document.getElementById('orderName').textContent = savedOrder.name;
-    document.getElementById('orderEmail').textContent = savedOrder.email;
-    document.getElementById('orderPhone').textContent = savedOrder.phone;
-    document.getElementById('orderFeedback').textContent = savedOrder.feedback;
-    document.getElementById('orderCustom').textContent = savedOrder.customOrder ? 'Yes' : 'No';
+    // Populate order confirmation page with saved data
+    document.getElementById('orderName').textContent = savedOrder.name || "N/A";
+    document.getElementById('orderEmail').textContent = savedOrder.email || "N/A";
+    document.getElementById('orderPhone').textContent = savedOrder.phone || "N/A";
+    document.getElementById('orderFeedback').textContent = savedOrder.feedback || "N/A";
+    document.getElementById('orderCustom').textContent = savedOrder.customOrder ? "Yes" : "No";
   } else {
-    // If no order data is available, show a default message
+    // If no saved order, display a message
     document.getElementById('orderDetails').innerHTML = '<p>No order information available.</p>';
   }
 });

@@ -90,6 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCartModal();
   });
 
+
+
+
+
 //function to view order-confirmation.html
 
 
@@ -99,18 +103,21 @@ document.addEventListener("DOMContentLoaded", function () {
   modal.style.display = "block";
 });
 
-
-
   // Handle custom order form
   const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
+  if (!contactForm) {
+    console.error("Contact form not found.");
+    return; // Exit the script if the contact form is missing
+  }
+  
+  else if (contactForm) {
     contactForm.addEventListener('submit', function (event) {
       event.preventDefault();
-      const name = document.getElementById('name')?.value;
-      const email = document.getElementById('email')?.value;
-      const phone = document.getElementById('phone')?.value;
-      const feedback = document.getElementById('feedback')?.value;
-      const customOrder = document.getElementById('customOrder')?.checked;
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const feedback = document.getElementById('feedback').value;
+      const customOrder = document.getElementById('customOrder').checked;
 
       const orderInfo = { name, email, phone, feedback, customOrder };
       localStorage.setItem('customOrder', JSON.stringify(orderInfo));
@@ -134,6 +141,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const orderCustom = document.getElementById('orderCustom');
   const orderDetails = document.getElementById('orderDetails');
 
+  if (!orderConfirmation) {
+    console.error("Order confirmation element not found.");
+    return; // Exit the script if the order confirmation element is missing
+  } else
   if (orderName && savedOrder) {
     orderName.textContent = savedOrder.name || "N/A";
     orderEmail.textContent = savedOrder.email || "N/A";
@@ -143,4 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } else if (orderDetails) {
     orderDetails.innerHTML = '<p>No order information available.</p>';
   }
+
+   // Optionally hide the form
+   //contactForm.style.display = 'none';
 });
