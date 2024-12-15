@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
       console.error('Error saving order information to localStorage:', error);
     }
-
+    console.log('Form submitted!'); 
     // Optionally clear the form
     contactForm.reset();
   });
