@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const processOrderButton = document.getElementById("processOrderButton");
   const clearCartButton = document.getElementById("clearCartButton");
 
-  if (!viewCartButton || !cartItemsContainer || !modal || !closeModal) {
+  if (!viewCartButton || !cartItemsContainer || !closeModal) {
     console.error("Some essential elements are missing in the DOM.");
     return; // Exit script if essential elements are missing
   }
