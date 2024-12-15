@@ -103,18 +103,19 @@
             </label>
             
             <label for="phone" style="display: contents; margin-left: 30px;"><pre>    Phone number: </pre>
-              <input type="text" id="phone" name="user-phone" style="width: 50%; margin-left: 30px;">
+            <input type="text" id="phone" name="user-phone" pattern="\d{10}" title="Please enter a 10-digit phone number"
+              style="width: 50%; margin-left: 30px;"> 
             </label>
             
             <label for="text" style="display: contents; margin-left: 30px; "><pre>    FeedBack/ Order information: </pre>
               <textarea id="feedback" class="feedback"></textarea>
             </label>
 
-
-            <label for="text" style=" margin-left: 30px;"><pre>Custom Order:<input type="radio" id="customOrder" style="width: 20%; margin-left: -33px;"></pre>
-              <br>
+            <label for="customOrder" style=" margin-left: 30px; margin-top: 0%;
+             margin-bottom: 5%;">Custom Order:
+              <input type="radio" id="customOrder" name="orderType">
             </label>
-
+            
              <div style="display: inline-block; padding: 4px 35px;"  >   
             <button type="submit" style="width: 20%; margin-left: 30px;">Submit</button>
             <button type="button" class="button2" style="width: 20%; margin-left: 30px;">Clear Form</button>
@@ -122,7 +123,17 @@
           </fieldset>
     </form>
    <hr>
-    
+    <br>
+
+
+<!-- View Order -->
+<div class="section2">
+  <a href="order-confirmation.html" id="viewCartButton" 
+  class="free-trial-button" style="width: auto;">View Order</a>
+</div>
+
+
+    <hr>
 <footer>
   <table style="width:100%">
     <tr>

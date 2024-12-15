@@ -90,6 +90,17 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCartModal();
   });
 
+//function to view order-confirmation.html
+
+
+ // View custom order-confirmation
+ viewCartButton.addEventListener('click', function () {
+  //function();
+  modal.style.display = "block";
+});
+
+
+
   // Handle custom order form
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
@@ -109,6 +120,10 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("Contact form not found");
   }
+
+ // Display the order confirmation section
+ const orderConfirmation = document.getElementById('orderConfirmation');
+ orderConfirmation.style.display = 'block';
 
   // Order confirmation page
   const savedOrder = JSON.parse(localStorage.getItem('customOrder'));
