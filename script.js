@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       // Save form data to sessionStorage
-      sessionStorage.setItem('contactForm', JSON.stringify(formData));
+      localStorage.setItem('contactForm', JSON.stringify(formData));
 
       alert('Your order information has been saved successfully!');
       contactForm.reset();
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Order confirmation page logic (from sessionStorage)
   if (document.getElementById('orderConfirmation')) {
-    const savedOrder = JSON.parse(sessionStorage.getItem('contactForm'));
+    const savedOrder = JSON.parse(localStorage.getItem('contactForm'));
     const orderName = document.getElementById('orderName');
     const orderEmail = document.getElementById('orderEmail');
     const orderPhone = document.getElementById('orderPhone');

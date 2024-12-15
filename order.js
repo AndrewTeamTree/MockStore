@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const savedOrder = JSON.parse(sessionStorage.getItem('contactForm'));
+  const savedOrder = JSON.parse(localStorage.getItem('contactForm'));
 
   if (savedOrder) {
     // Populate order confirmation page with saved data
