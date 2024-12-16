@@ -11,10 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const clearCartButton = document.getElementById("clearCartButton");
   const contactForm = document.getElementById('contactForm');
 
-  if (!viewCartButton || !cartItemsContainer || !closeModal) {
-    console.error("Some essential elements are missing in the DOM.");
-    return; // Exit script if essential elements are missing
-  }
+ 
 
   // Function to update the cart modal
   function updateCartModal() {
