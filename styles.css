@@ -211,7 +211,7 @@ h1 {
 
   
 
-  .button, .free-trial-button, .add-to-cart-button {
+  .button, .free-trial-button, .add-to-cart-button, .more-button {
     font-size: 14px; 
     padding: 5px 16px; 
   }
@@ -385,7 +385,7 @@ main img {
   color: #f7f7f7;
 }
 
- .free-trial-button, .add-to-cart-button {
+ .free-trial-button, .add-to-cart-button, .more-button {
   padding: 5px 16px;
   border-radius: 5px;
   text-align: center;
@@ -395,14 +395,14 @@ main img {
   outline: none;
 }
 
-.button:hover,.links:hover, .free-trial-button:hover, .add-to-cart-button:hover {
+.button:hover,.links:hover, .free-trial-button:hover, .add-to-cart-button:hover, .more-button:hover {
   background-color: #218838;
   transform: translateY(-1px);
 }
 
 
 
-.free-trial-button, .add-to-cart-button {
+.free-trial-button, .add-to-cart-button, .more-button {
   background-color: #28a745;
   color: #f7f7f7;
   text-decoration: none;
