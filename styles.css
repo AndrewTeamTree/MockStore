@@ -171,6 +171,11 @@ h1 {
     flex-direction: row; 
   }
 
+  .cardQ h2 {
+    font-size: medium;
+  }
+  
+
   nav a {
     width: 100%; 
   }
@@ -178,6 +183,10 @@ h1 {
 
 @media (max-width: 480px) {
  
+  .cardQ h2 {
+    font-size: small;
+  }
+  
 
   nav img {
     height: 20px;

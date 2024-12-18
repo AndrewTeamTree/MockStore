@@ -11,6 +11,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const clearCartButton = document.getElementById("clearCartButton");
   
 
+  // Select the button using its class
+  const signUpButton = document.querySelector('.signUp');
+  
+  // Check if the button exists
+  if (signUpButton) {
+    // Add event listener for the click event
+    signUpButton.addEventListener('click', function() {
+      // Access the data-signUp attribute value
+      const message = signUpButton.getAttribute('data-signUp');
+      
+      // Display the alert with the message
+      alert(message);
+    });
+  }
+
+
  
 
   // Function to update the cart modal
