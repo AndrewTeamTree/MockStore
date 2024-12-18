@@ -256,6 +256,43 @@ main img {
 }
 
 
+.card-containerQ {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin: 20px;
+  padding: 20px 10px; /* Prevent cards from touching the container edges */
+  background-color: #bdd4da;
+}
+
+.cardQ {
+  flex: 1 1 20%; /* 3 columns per row */
+  min-height: 200px; /* Adjust as needed for uniform height */
+  border: 1px solid black;
+  background-color: #f7f7f7;
+  box-shadow: 1px 3px 14px rgba(0, 0, 0, 0.2);
+  display: flex; /* Enable Flexbox layout for the card */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center-align the content inside the card */
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 15px;
+  margin-bottom: 10px; /* Spacing between rows */
+}
+
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin: 20px;
+  padding: 20px 10px; /* Prevent cards from touching the container edges */
+  background-color: #bdd4da;
+}
 
 .card {
   flex: 1 1 33%; /* 3 columns per row */
@@ -372,19 +409,6 @@ main img {
   background-color: #bdd4da;
 }
 
-
-
-
-.card-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 2px;
-  margin: 20px;
-
-  padding: 20px 10px; /* Prevent cards from touching the container edges */
-  background-color: #bdd4da;
-}
 
 hr {
   display: flex;
